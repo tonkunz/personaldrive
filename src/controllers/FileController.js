@@ -14,6 +14,9 @@ class FileController {
     box.files.push(file)
 
     await box.save()
+
+    // Disparar a mensagem de novo arquivo para usuários da mesma box/socket
+    req.io.sockets.in(box._id).emit('file', file)
     
     return res.json(file)
   }
