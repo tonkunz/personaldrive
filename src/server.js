@@ -34,6 +34,6 @@ app.use('/files', express.static(path.resolve(__dirname, '..', 'tmp')))
 
 app.use(require('./routes'))
 
-server.listen(3001, () => {
+server.listen(process.env.PORT || 3001, () => {
   console.log('Server running on port 3001! Press Ctrl + C to cancel...')
 })
